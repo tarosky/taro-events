@@ -86,30 +86,30 @@ HTML;
 		// Offline event.
 		$is_offline = get_post_meta( $post->ID, taro_events_meta_prefix() . 'is_offline', true );
 		if ( $is_offline ) {
-			$place_name    = get_post_meta( $post->ID, taro_events_meta_prefix() . 'place_name', true );
-			$place_address = get_post_meta( $post->ID, taro_events_meta_prefix() . 'place_address', true );
-			if ( empty( $place_name ) || empty( $place_address ) ) {
+			$location_name    = get_post_meta( $post->ID, taro_events_meta_prefix() . 'location_name', true );
+			$location_address = get_post_meta( $post->ID, taro_events_meta_prefix() . 'location_address', true );
+			if ( empty( $location_name ) || empty( $location_address ) ) {
 				return;
 			}
 			$locations[] = [
 				'@type'   => 'Place',
-				'name'    => $place_name,
+				'name'    => $location_name,
 				'address' => [
 					'@type' => 'PostalAddress',
-					'name'  => $place_address,
+					'name'  => $location_address,
 				],
 			];
 		}
 		// Online event.
 		$is_online = get_post_meta( $post->ID, taro_events_meta_prefix() . 'is_online', true );
 		if ( $is_online ) {
-			$online_url = get_post_meta( $post->ID, taro_events_meta_prefix() . 'online_url', true );
-			if ( empty( $online_url ) ) {
+			$location_url = get_post_meta( $post->ID, taro_events_meta_prefix() . 'location_url', true );
+			if ( empty( $location_url ) ) {
 				return;
 			}
 			$locations[] = [
 				'@type' => 'VirtualLocation',
-				'url'   => $online_url,
+				'url'   => $location_url,
 			];
 		}
 		$json['location'] = $locations;

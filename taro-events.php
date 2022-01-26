@@ -67,5 +67,21 @@ function taro_events_version() {
 	return $version;
 }
 
+/**
+ * Get template dir
+ *
+ * @param string $file
+ *
+ * @return string
+ */
+function taro_events_template( $file ) {
+	$template_path = trailingslashit( __DIR__ . '/templates' ) . ltrim( $file, '/' );
+	if ( file_exists( $template_path ) ) {
+		return $template_path;
+	} else {
+		return '';
+	}
+}
+
 // Register hooks.
 add_action( 'plugins_loaded', 'taro_events_init' );

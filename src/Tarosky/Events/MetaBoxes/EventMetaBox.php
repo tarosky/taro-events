@@ -41,140 +41,10 @@ class EventMetaBox extends Singleton {
 	 * @param \WP_Post $post post object.
 	 */
 	public function meta_box_callback( \WP_Post $post ) {
-		// Has capability.
-		wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
-		?>
-		<h3>Date</h3>
-		<table class="form-table">
-			<tbody>
-			<?php
-			foreach (
-				[
-					'start_date'           => __( 'Start date', 'taro-events' ),
-					'end_date'             => __( 'End date', 'taro-events' ),
-					'reception_start_date' => __( 'Reception start date', 'taro-events' ),
-					'reception_end_date'   => __( 'Reception end date', 'taro-events' ),
-				] as $key => $label
-			) :
-				$meta_key      = taro_events_meta_prefix() . $key;
-				$meta_key_time = taro_events_meta_prefix() . $key . '_time';
-				$date          = get_post_meta( $post->ID, $meta_key, true );
-				if ( $date ) {
-					$date = wp_date( 'Y-m-d', strtotime( $date ) );
-				}
-				?>
-				<tr>
-					<th><label for="<?php echo esc_attr( $meta_key ); ?>"><?php echo esc_html( $label ); ?></label></th>
-					<td>
-						<input type="date" name="<?php echo esc_attr( $meta_key ); ?>"
-							id="<?php echo esc_attr( $meta_key ); ?>" class="regular-text"
-							value="<?php echo esc_attr( $date ); ?>"/>
-						<select name="<?php echo esc_attr( $meta_key_time ); ?>"
-							id="<?php echo esc_attr( $meta_key_time ); ?>">
-							<option value=""><?php echo esc_html( __( 'Not specified', 'taro-events' ) ); ?></option>
-							<?php
-							foreach ( range( 0, 23 ) as $hour ) :
-								foreach ( [ '00', '30' ] as $minute ) :
-									?>
-									<option
-										value="<?php echo esc_attr( sprintf( '%02s:%02s:00', $hour, $minute ) ); ?>" <?php selected( get_post_meta( $post->ID, $meta_key_time, true ), sprintf( '%02s:%02s:00', $hour, $minute ) ); ?>>
-										<?php echo esc_html( sprintf( '%02s:%02s', $hour, $minute ) ); ?></option>
-									<?php
-								endforeach;
-							endforeach;
-							?>
-						</select>
-					</td>
-				</tr>
-			<?php endforeach; ?>
-			</tbody>
-		</table>
-
-		<h3>Location</h3>
-		<table class="form-table">
-			<tbody>
-			<?php
-			$meta_key = taro_events_meta_prefix() . 'is_offline';
-			?>
-			<tr>
-				<th><label
-						for="<?php echo esc_attr( $meta_key ); ?>"><?php esc_html_e( 'Offline event', 'taro-events' ); ?></label>
-				</th>
-				<td>
-					<label>
-						<input type="checkbox" name="<?php echo esc_attr( $meta_key ); ?>"
-							id="<?php echo esc_attr( $meta_key ); ?>"
-							value="1" <?php checked( get_post_meta( $post->ID, $meta_key, true ) ); ?> />
-						<?php esc_html_e( 'If this event is offline, please check the box.', 'taro-events' ); ?>
-					</label>
-				</td>
-			</tr>
-			<?php
-			foreach (
-				[
-					'place_name'    => __( 'Place name', 'taro-events' ),
-					'place_address' => __( 'Place address', 'taro-events' ),
-				] as $key => $label
-			) :
-				$meta_key = taro_events_meta_prefix() . $key;
-				?>
-				<tr>
-					<th><label
-							for="<?php echo esc_attr( $meta_key ); ?>"><?php echo esc_html( $label ); ?></label>
-					</th>
-					<td>
-						<input type="text" name="<?php echo esc_attr( $meta_key ); ?>"
-							id="<?php echo esc_attr( $meta_key ); ?>"
-							class="regular-text"
-							value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
-						<p class="description"><?php esc_html_e( 'Required if the event is offline.', 'taro-events' ); ?></p>
-					</td>
-				</tr>
-				<?php
-			endforeach;
-			?>
-			<?php
-			$meta_key = taro_events_meta_prefix() . 'is_online';
-			?>
-			<tr>
-				<th><label
-						for="<?php echo esc_attr( $meta_key ); ?>"><?php esc_html_e( 'Online event', 'taro-events' ); ?></label>
-				</th>
-				<td>
-					<label>
-						<input type="checkbox" name="<?php echo esc_attr( $meta_key ); ?>"
-							id="<?php echo esc_attr( $meta_key ); ?>"
-							value="1" <?php checked( get_post_meta( $post->ID, $meta_key, true ) ); ?> />
-						<?php esc_html_e( 'If this event is online, please check the box.', 'taro-events' ); ?>
-					</label>
-				</td>
-			</tr>
-			<?php
-			foreach (
-				[
-					'online_url' => __( 'Online URL', 'taro-events' ),
-				] as $key => $label
-			) :
-				$meta_key = taro_events_meta_prefix() . $key;
-				?>
-				<tr>
-					<th><label
-							for="<?php echo esc_attr( $meta_key ); ?>"><?php echo esc_html( $label ); ?></label>
-					</th>
-					<td>
-						<input type="url" name="<?php echo esc_attr( $meta_key ); ?>"
-							id="<?php echo esc_attr( $meta_key ); ?>"
-							class="regular-text"
-							value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
-						<p class="description"><?php esc_html_e( 'Required if the event is online.', 'taro-events' ); ?></p>
-					</td>
-				</tr>
-				<?php
-			endforeach;
-			?>
-			</tbody>
-		</table>
-		<?php
+		$file = taro_events_template( 'metabox-event.php' );
+		if ( $file ) {
+			include_once $file;
+		}
 	}
 
 	/**
@@ -219,11 +89,21 @@ class EventMetaBox extends Singleton {
 
 		foreach (
 			[
+				'name',
+				'description',
+				'event_status',
 				'is_offline',
-				'place_name',
-				'place_address',
+				'location_name',
+				'location_address',
 				'is_online',
-				'online_url',
+				'location_url',
+				'offers_availability',
+				'offers_price',
+				'offers_currency',
+				'offers_valid_from',
+				'offers_url',
+				'organizer_name',
+				'organizer_url',
 			] as $key
 		) {
 			update_post_meta( $post_id, taro_events_meta_prefix() . $key, filter_input( INPUT_POST, taro_events_meta_prefix() . $key ) );
