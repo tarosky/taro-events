@@ -2,8 +2,8 @@
 
 namespace Tarosky\Events;
 
-use Tarosky\Events\Metaboxes\EventMetaBox;
 use Tarosky\Events\Controller\Filter;
+use Tarosky\Events\MetaBoxes\EventMetaBox;
 use Tarosky\Events\Pattern\Singleton;
 use Tarosky\Events\Services\MetaInfo;
 
