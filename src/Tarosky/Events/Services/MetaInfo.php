@@ -104,7 +104,7 @@ HTML;
 
 		// eventAttendanceMode
 		$is_offline = get_post_meta( $post->ID, taro_events_meta_prefix() . 'is_offline', true );
-		$is_online = get_post_meta( $post->ID, taro_events_meta_prefix() . 'is_online', true );
+		$is_online  = get_post_meta( $post->ID, taro_events_meta_prefix() . 'is_online', true );
 		if ( $is_offline && $is_online ) {
 			$json['eventAttendanceMode'] = trailingslashit( $context ) . 'MixedEventAttendanceMode';
 		} elseif ( $is_offline ) {
