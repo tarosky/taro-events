@@ -52,12 +52,26 @@ HTML;
 			return null;
 		}
 
+		$context = 'https://schema.org';
+
 		// Basic information.
 		$json = [
-			'@context' => 'http://schema.org',
+			'@context' => $context,
 			'@type'    => 'Event',
-			'name'     => get_the_title( $post ),
 		];
+
+		// Name
+		$name = get_post_meta( $post->ID, taro_events_meta_prefix() . 'name', true );
+		if ( ! $name ) {
+			$name = get_the_title( $post );
+		}
+		$json['name'] = $name;
+
+		// Description
+		$description = get_post_meta( $post->ID, taro_events_meta_prefix() . 'description', true );
+		if ( $description ) {
+			$json['description'] = $description;
+		}
 
 		// Date
 		$offset = $this->get_gmt_offset_string();
@@ -76,19 +90,37 @@ HTML;
 			$dates[] = $date;
 		}
 		if ( count( $dates ) !== 2 ) {
+			// Required fields is empty.
 			return null;
 		}
 		$json['startDate'] = $dates[0];
 		$json['endDate']   = $dates[1];
 
+		// Event Status
+		$event_status = get_post_meta( $post->ID, taro_events_meta_prefix() . 'event_status', true );
+		if ( $event_status ) {
+			$json['eventStatus'] = trailingslashit( $context ) . $event_status;
+		}
+
+		// eventAttendanceMode
+		$is_offline = get_post_meta( $post->ID, taro_events_meta_prefix() . 'is_offline', true );
+		$is_online = get_post_meta( $post->ID, taro_events_meta_prefix() . 'is_online', true );
+		if ( $is_offline && $is_online ) {
+			$json['eventAttendanceMode'] = trailingslashit( $context ) . 'MixedEventAttendanceMode';
+		} elseif ( $is_offline ) {
+			$json['eventAttendanceMode'] = trailingslashit( $context ) . 'OfflineEventAttendanceMode';
+		} elseif ( $is_online ) {
+			$json['eventAttendanceMode'] = trailingslashit( $context ) . 'OnlineEventAttendanceMode';
+		}
+
 		// Location
 		$locations = [];
 		// Offline event.
-		$is_offline = get_post_meta( $post->ID, taro_events_meta_prefix() . 'is_offline', true );
 		if ( $is_offline ) {
 			$location_name    = get_post_meta( $post->ID, taro_events_meta_prefix() . 'location_name', true );
 			$location_address = get_post_meta( $post->ID, taro_events_meta_prefix() . 'location_address', true );
 			if ( empty( $location_name ) || empty( $location_address ) ) {
+				// Required fields is empty.
 				return;
 			}
 			$locations[] = [
@@ -101,10 +133,10 @@ HTML;
 			];
 		}
 		// Online event.
-		$is_online = get_post_meta( $post->ID, taro_events_meta_prefix() . 'is_online', true );
 		if ( $is_online ) {
 			$location_url = get_post_meta( $post->ID, taro_events_meta_prefix() . 'location_url', true );
 			if ( empty( $location_url ) ) {
+				// Required fields is empty.
 				return;
 			}
 			$locations[] = [
@@ -113,6 +145,48 @@ HTML;
 			];
 		}
 		$json['location'] = $locations;
+
+		// Offers
+		$offers['@type']     = 'Offer';
+		$offers_availability = get_post_meta( $post->ID, taro_events_meta_prefix() . 'offers_availability', true );
+		if ( $offers_availability ) {
+			$offers['availability'] = trailingslashit( $context ) . $offers_availability;
+		}
+		$offers_price = get_post_meta( $post->ID, taro_events_meta_prefix() . 'offers_price', true );
+		if ( $offers_price ) {
+			$offers['price'] = $offers_price;
+		}
+		$offers_currency = get_post_meta( $post->ID, taro_events_meta_prefix() . 'offers_currency', true );
+		if ( $offers_currency ) {
+			$offers['priceCurrency'] = $offers_currency;
+		}
+		$offers_valid_from = get_post_meta( $post->ID, taro_events_meta_prefix() . 'offers_valid_from', true );
+		if ( $offers_valid_from ) {
+			$offers_valid_from_time = get_post_meta( $post->ID, taro_events_meta_prefix() . 'offers_valid_from_time', true );
+			if ( $offers_valid_from_time ) {
+				$valid_from = sprintf( '%sT%s%s', wp_date( 'Y-m-d', strtotime( $offers_valid_from ) ), $offers_valid_from_time, $offset );
+			} else {
+				$valid_from = wp_date( 'Y-m-d', strtotime( $offers_valid_from ) );
+			}
+			$offers['validFrom'] = $valid_from;
+		}
+		$offers_url = get_post_meta( $post->ID, taro_events_meta_prefix() . 'offers_url', true );
+		if ( $offers_url ) {
+			$offers['url'] = $offers_url;
+		}
+		$json['offers'] = $offers;
+
+		// Organizer
+		$organizer['@type'] = 'Organization';
+		$organizer_name     = get_post_meta( $post->ID, taro_events_meta_prefix() . 'organizer_name', true );
+		if ( $organizer_name ) {
+			$organizer['name'] = $organizer_name;
+		}
+		$organizer_url = get_post_meta( $post->ID, taro_events_meta_prefix() . 'organizer_url', true );
+		if ( $organizer_url ) {
+			$organizer['url'] = $organizer_url;
+		}
+		$json['organizer'] = $organizer;
 
 		return apply_filters( 'taro_events_get_json_ld', $json, $post );
 	}
