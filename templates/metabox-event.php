@@ -11,7 +11,7 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 	<?php
 	foreach (
 		[
-			'name' => __( 'Title', 'taro-events' ),
+			'name' => __( 'Name', 'taro-events' ),
 			'description' => __( 'Description', 'taro-events' ),
 		] as $key => $label
 	) :
@@ -138,7 +138,6 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 			<input type="text" name="<?php echo esc_attr( $meta_key ); ?>"
 			       id="<?php echo esc_attr( $meta_key ); ?>"
 			       class="regular-text"
-			       placeholder="<?php esc_html_e( 'USD', 'taro-events' ); ?>"
 			       value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
 			<p class="description"><?php esc_html_e( "The name of the venue.", 'taro-events' ); ?></p>
 		</td>
@@ -153,7 +152,6 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 			<input type="text" name="<?php echo esc_attr( $meta_key ); ?>"
 			       id="<?php echo esc_attr( $meta_key ); ?>"
 			       class="regular-text"
-			       placeholder="<?php esc_html_e( 'USD', 'taro-events' ); ?>"
 			       value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
 			<p class="description"><?php esc_html_e( "The venue’s detailed address.", 'taro-events' ); ?></p>
 		</td>

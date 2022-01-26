@@ -101,6 +101,7 @@ class EventMetaBox extends Singleton {
 				'offers_price',
 				'offers_currency',
 				'offers_valid_from',
+				'offers_valid_from_time',
 				'offers_url',
 				'organizer_name',
 				'organizer_url',
