@@ -185,7 +185,7 @@ HTML;
 		$json['offers'] = $offers;
 
 		// Organizer
-		$organizer['@type'] = 'Organization';
+		$organizer['@type'] = get_post_meta( $post->ID, taro_events_meta_prefix() . 'organizer_type', true );
 		$organizer_name     = get_post_meta( $post->ID, taro_events_meta_prefix() . 'organizer_name', true );
 		if ( $organizer_name ) {
 			$organizer['name'] = $organizer_name;

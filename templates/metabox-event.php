@@ -323,6 +323,31 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 <table class="form-table">
 	<tbody>
 	<?php
+	$meta_key = taro_events_meta_prefix() . 'organizer_type';
+	?>
+	<tr>
+		<th><label
+				for="<?php echo esc_attr( $meta_key ); ?>"><?php esc_html_e( 'Type', 'taro-events' ); ?></label>
+		</th>
+		<td>
+			<?php
+			foreach (
+				[
+					'Organization' => __( 'Organization', 'taro-events' ),
+					'Person'       => __( 'Person', 'taro-events' ),
+				] as $key => $label
+			) :
+				?>
+				<label>
+					<input type="radio" name="<?php echo esc_attr( $meta_key ); ?>"
+						value="<?php echo esc_attr( $key ); ?>" <?php checked( get_post_meta( $post->ID, $meta_key, true ), $key ); ?> /><?php echo esc_html( $label ); ?>
+				</label>
+				<?php
+			endforeach;
+			?>
+		</td>
+	</tr>
+	<?php
 	$meta_key = taro_events_meta_prefix() . 'organizer_name';
 	?>
 	<tr>

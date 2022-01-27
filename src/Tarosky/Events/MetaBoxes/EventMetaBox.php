@@ -39,6 +39,7 @@ class EventMetaBox extends Singleton {
 		'offers_valid_from',
 		'offers_valid_from_time',
 		'offers_url',
+		'organizer_type',
 		'organizer_name',
 		'organizer_url',
 	];
