@@ -113,6 +113,14 @@ HTML;
 			$json['eventAttendanceMode'] = trailingslashit( $context ) . 'OnlineEventAttendanceMode';
 		}
 
+		// Image
+		if ( has_post_thumbnail() ) {
+			$image = get_the_post_thumbnail_url( $post->ID, 'full' );
+			if ( $image ) {
+				$json['image'] = [ $image ];
+			}
+		}
+
 		// Location
 		$locations = [];
 		// Offline event.
