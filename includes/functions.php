@@ -377,8 +377,8 @@ function taro_events_get_meta( $key, $post = null, $singular = true ) {
  */
 function taro_events_get_metas( $keys = [], $post = null, $singular = true ) {
 	if ( empty( $keys ) ) {
-		$EventMetaBox = \Tarosky\Events\Metaboxes\EventMetaBox::get_instance();
-		$keys         = $EventMetaBox->get_meta_keys();
+		$event_meta_box = \Tarosky\Events\Metaboxes\EventMetaBox::get_instance();
+		$keys           = $event_meta_box->get_meta_keys();
 	} elseif ( ! is_array( $keys ) ) {
 		$keys = (array) $keys;
 	}

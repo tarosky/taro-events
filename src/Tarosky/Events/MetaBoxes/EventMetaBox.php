@@ -96,18 +96,21 @@ class EventMetaBox extends Singleton {
 	 * @return array
 	 */
 	public function get_date_meta_keys() {
-		return array_map( function ( $meta_key ) {
-			return taro_events_meta_prefix() . $meta_key;
-		}, [
-			'start_date',
-			'start_date_time',
-			'end_date',
-			'end_date_time',
-			'reception_start_date',
-			'reception_start_date_time',
-			'reception_end_date',
-			'reception_end_date_time',
-		] );
+		return array_map(
+			function ( $meta_key ) {
+				return taro_events_meta_prefix() . $meta_key;
+			},
+			[
+				'start_date',
+				'start_date_time',
+				'end_date',
+				'end_date_time',
+				'reception_start_date',
+				'reception_start_date_time',
+				'reception_end_date',
+				'reception_end_date_time',
+			]
+		);
 	}
 
 	/**
