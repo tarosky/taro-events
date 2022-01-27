@@ -344,3 +344,48 @@ function taro_events_is_available_filter_event_type() {
 function taro_events_is_available_filter_event_status() {
 	return apply_filters( 'taro_events_is_available_filter_event_status', true );
 }
+
+/**
+ * Get an event meta value.
+ *
+ * @param string $key Meta key.
+ * @param null|int|WP_Post $post Post object.
+ * @param bool $singular Is singular?
+ *
+ * @return mixed
+ */
+function taro_events_get_meta( $key, $post = null, $singular = true ) {
+	$post = get_post( $post );
+	if ( ! $post ) {
+		return null;
+	}
+	if ( taro_events_post_type() !== $post->post_type ) {
+		return null;
+	}
+
+	return get_post_meta( $post->ID, $key, $singular );
+}
+
+/**
+ * Get event meta values.
+ *
+ * @param array $keys Meta keys.
+ * @param null|int|WP_Post $post Post object.
+ * @param bool $singular Is singular?
+ *
+ * @return mixed
+ */
+function taro_events_get_metas( $keys = [], $post = null, $singular = true ) {
+	if ( empty( $keys ) ) {
+		$EventMetaBox = \Tarosky\Events\Metaboxes\EventMetaBox::get_instance();
+		$keys         = $EventMetaBox->get_meta_keys();
+	} elseif ( ! is_array( $keys ) ) {
+		$keys = (array) $keys;
+	}
+	$metas = [];
+	foreach ( $keys as $key ) {
+		$metas[ $key ] = taro_events_get_meta( $key, $post, $singular );
+	}
+
+	return $metas;
+}
