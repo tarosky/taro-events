@@ -233,7 +233,7 @@ function taro_events_event_is_accepting_args() {
 			'compare' => '!=',
 		],
 		[
-			'key'     => taro_events_meta_prefix() . 'events_reception_end_date',
+			'key'     => taro_events_meta_prefix() . 'reception_end_date',
 			'value'   => wp_date( 'Y-m-d H:i:s' ),
 			'compare' => '>=',
 		],
