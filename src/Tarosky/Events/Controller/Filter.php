@@ -158,9 +158,9 @@ class Filter extends Singleton {
 	 * @return mixed
 	 */
 	public function get_event_status_form_dropdown() {
-		$var  = get_query_var( taro_events_event_status_name() );
-		$name = taro_events_event_status_name();
-		$html = '<select name="' . $name . '" id="' . $name . '" class="taro-events-filter-' . $name . '">';
+		$var   = get_query_var( taro_events_event_status_name() );
+		$name  = taro_events_event_status_name();
+		$html  = '<select name="' . $name . '" id="' . $name . '" class="taro-events-filter-' . $name . '">';
 		$html .= '<option value="" selected="selected">' . __( 'Do not specify', 'taro-events' ) . '</option>';
 		foreach ( taro_events_event_statuses() as $key => $label ) {
 			$html .= '<option class="level-0" value="' . esc_attr( $key ) . '"' . selected( ( $key === $var ), true, false ) . '>' . esc_html( $label ) . '</option>';
