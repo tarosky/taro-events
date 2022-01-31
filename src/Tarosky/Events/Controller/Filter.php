@@ -81,43 +81,51 @@ class Filter extends Singleton {
 			require( $filter_form_template );
 			$form = ob_get_clean();
 		} else {
-			$form = '<form role="filter method="get" class="filter-form" action="' . esc_url( get_post_type_archive_link( taro_events_post_type() ) ) . '">';
+			$form_open = '<form role="filter method="get" class="filter-form" action="' . esc_url( get_post_type_archive_link( taro_events_post_type() ) ) . '">';
 			// Event category.
+			$form_event_category = '';
 			if ( taro_events_is_available_filter_event_category() ) {
-				$form .= '<div class="taro-events-filter-event-category-wrap">';
-				$form .= '<div class="taro-events-filter-event-category-label">' . __( 'Event categories', 'taro-events' ) . '</div>';
-				$form .= $this->get_taxonomy_form_html( taro_events_taxonomy_event_category() );
-				$form .= '</div>';
+				$form_event_category .= '<div class="taro-events-filter-event-category-wrap">';
+				$form_event_category .= '<div class="taro-events-filter-event-category-label">' . __( 'Event categories', 'taro-events' ) . '</div>';
+				$form_event_category .= $this->get_taxonomy_form_html( taro_events_taxonomy_event_category() );
+				$form_event_category .= '</div>';
 			}
 			// Event type.
+			$form_event_type = '';
 			if ( taro_events_is_available_filter_event_type() ) {
-				$form .= '<div class="taro-events-filter-event-type-wrap">';
-				$form .= '<div class="taro-events-filter-event-type-label">' . __( 'Event types', 'taro-events' ) . '</div>';
-				$form .= $this->get_taxonomy_form_html( taro_events_taxonomy_event_type() );
-				$form .= '</div>';
+				$form_event_type .= '<div class="taro-events-filter-event-type-wrap">';
+				$form_event_type .= '<div class="taro-events-filter-event-type-label">' . __( 'Event types', 'taro-events' ) . '</div>';
+				$form_event_type .= $this->get_taxonomy_form_html( taro_events_taxonomy_event_type() );
+				$form_event_type .= '</div>';
 			}
 			// Event status.
+			$form_event_status = '';
 			if ( taro_events_is_available_filter_event_status() ) {
-				$form .= '<div class="taro-events-filter-event-status-wrap">';
-				$form .= '<div class="taro-events-filter-event-status-label">' . __( 'Event status', 'taro-events' ) . '</div>';
-				$form .= $this->get_event_status_form_dropdown();
-				$form .= '</div>';
+				$form_event_status .= '<div class="taro-events-filter-event-status-wrap">';
+				$form_event_status .= '<div class="taro-events-filter-event-status-label">' . __( 'Event status', 'taro-events' ) . '</div>';
+				$form_event_status .= $this->get_event_status_form_dropdown();
+				$form_event_status .= '</div>';
 			}
-			$form .= '<input type="submit" class="filter-submit" value="' . __( 'Filter', 'taro-events' ) . '" />';
-			$form .= '</form>';
+			$form_submit = '<input type="submit" class="filter-submit" value="' . __( 'Filter', 'taro-events' ) . '" />';
+			$form_close  = '</form>';
+
+			$form = $form_open . $form_event_category . $form_event_type . $form_event_status . $form_submit . $form_close;
+
+			/**
+			 * Filters the HTML output of the filter form.
+			 *
+			 * @param string $form The filter form HTML output.
+			 * @param string $form_open The part of the form open tag.
+			 * @param string $form_event_category The part of the event category field.
+			 * @param string $form_event_type The part of the event type field.
+			 * @param string $form_event_status The part of the event status field.
+			 * @param string $form_submit The part of the submit field.
+			 * @param string $form_close The part of the form close tag.
+			 */
+			$form = apply_filters( 'taro_events_get_filter_form_html', $form, $form_open, $form_event_category, $form_event_type, $form_event_status, $form_submit, $form_close );
 		}
 
-		/**
-		 * Filters the HTML output of the filter form.
-		 *
-		 * @param string $form The filter form HTML output.
-		 */
-		$result = apply_filters( 'taro_events_get_filter_form_html', $form );
-		if ( null === $result ) {
-			$result = $form;
-		}
-
-		return $result;
+		return $form;
 	}
 
 	/**
@@ -150,9 +158,9 @@ class Filter extends Singleton {
 	 * @return mixed
 	 */
 	public function get_event_status_form_dropdown() {
-		$var   = get_query_var( taro_events_event_status_name() );
-		$name  = taro_events_event_status_name();
-		$html  = '<select name="' . $name . '" id="' . $name . '" class="taro-events-filter-' . $name . '">';
+		$var  = get_query_var( taro_events_event_status_name() );
+		$name = taro_events_event_status_name();
+		$html = '<select name="' . $name . '" id="' . $name . '" class="taro-events-filter-' . $name . '">';
 		$html .= '<option value="" selected="selected">' . __( 'Do not specify', 'taro-events' ) . '</option>';
 		foreach ( taro_events_event_statuses() as $key => $label ) {
 			$html .= '<option class="level-0" value="' . esc_attr( $key ) . '"' . selected( ( $key === $var ), true, false ) . '>' . esc_html( $label ) . '</option>';
