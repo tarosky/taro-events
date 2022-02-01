@@ -5,6 +5,7 @@ namespace Tarosky\Events;
 use Tarosky\Events\Controller\Filter;
 use Tarosky\Events\MetaBoxes\EventMetaBox;
 use Tarosky\Events\Pattern\Singleton;
+use Tarosky\Events\Services\Feed;
 use Tarosky\Events\Services\MetaInfo;
 
 /**
@@ -29,6 +30,7 @@ class Bootstrap extends Singleton {
 		Filter::get_instance();
 
 		// Services.
+		Feed::get_instance();
 		MetaInfo::get_instance();
 	}
 
