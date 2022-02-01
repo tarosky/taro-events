@@ -35,7 +35,7 @@ function taro_events_post_type_args() {
 		'has_archive'     => true,
 		'show_in_rest'    => true,
 		'capability_type' => 'page',
-		'supports'        => [ 'title', 'editor', 'author', 'thumbnail' ],
+		'supports'        => [ 'title', 'editor', 'author', 'thumbnail', 'excerpt' ],
 		'menu_icon'       => 'dashicons-calendar',
 	] );
 }
