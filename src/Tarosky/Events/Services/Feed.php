@@ -82,7 +82,7 @@ class Feed extends Singleton {
 			if ( get_post_meta( get_the_ID(), taro_events_meta_prefix() . $meta_key_format, true ) ) {
 				$location = get_post_meta( get_the_ID(), taro_events_meta_prefix() . $meta_key_location, true );
 				if ( $location ) {
-					echo '<ev:location><![CDATA[' . esc_html( $location ) . "]]</ev:location>\n";
+					echo '<ev:location><![CDATA[' . esc_html( $location ) . "]]></ev:location>\n";
 					break;
 				}
 			}
@@ -91,7 +91,7 @@ class Feed extends Singleton {
 		// Organizer
 		$organizer = get_post_meta( get_the_ID(), taro_events_meta_prefix() . 'organizer_name', true );
 		if ( $organizer ) {
-			echo '<ev:organizer><![CDATA[' . esc_html( $organizer ) . "]]</ev:organizer>\n";
+			echo '<ev:organizer><![CDATA[' . esc_html( $organizer ) . "]]></ev:organizer>\n";
 		}
 
 		// Type
@@ -103,7 +103,7 @@ class Feed extends Singleton {
 					$term_names[] = $term->name;
 				}
 				if ( ! empty( $term_names ) ) {
-					echo '<ev:type><![CDATA[' . esc_html( implode( ',', $term_names ) ) . "]]</ev:type>\n";
+					echo '<ev:type><![CDATA[' . esc_html( implode( ',', $term_names ) ) . "]]></ev:type>\n";
 				}
 			}
 		}
