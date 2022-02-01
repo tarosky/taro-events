@@ -33,7 +33,7 @@ class Feed extends Singleton {
 			return;
 		}
 
-		echo 'xmlns:ev="http://purl.org/rss/1.0/modules/event/"';
+		echo 'xmlns:ev="http://purl.org/rss/1.0/modules/event/"' . "\n";
 	}
 
 	/**
@@ -68,7 +68,8 @@ class Feed extends Singleton {
 			} else {
 				$date = wp_date( 'Y-m-d', strtotime( $date ) );
 			}
-			echo '<ev:' . str_replace( '_', '', $key ) . '>' . esc_html( $date ) . '</ev:' . $key . ">\n";
+			$ev_key = str_replace( '_', '', $key );
+			echo '<ev:' . $ev_key . '>' . esc_html( $date ) . '</ev:' . $ev_key . ">\n";
 		}
 
 		// Location
@@ -81,7 +82,7 @@ class Feed extends Singleton {
 			if ( get_post_meta( get_the_ID(), taro_events_meta_prefix() . $meta_key_format, true ) ) {
 				$location = get_post_meta( get_the_ID(), taro_events_meta_prefix() . $meta_key_location, true );
 				if ( $location ) {
-					echo '<ev:location><![CDATA[' . esc_html( $location ) . "]]</ev:location>\n";
+					echo '<ev:location><![CDATA[' . esc_html( $location ) . "]]></ev:location>\n";
 					break;
 				}
 			}
@@ -90,7 +91,7 @@ class Feed extends Singleton {
 		// Organizer
 		$organizer = get_post_meta( get_the_ID(), taro_events_meta_prefix() . 'organizer_name', true );
 		if ( $organizer ) {
-			echo '<ev:organizer><![CDATA[' . esc_html( $organizer ) . "]]</ev:organizer>\n";
+			echo '<ev:organizer><![CDATA[' . esc_html( $organizer ) . "]]></ev:organizer>\n";
 		}
 
 		// Type
@@ -102,7 +103,7 @@ class Feed extends Singleton {
 					$term_names[] = $term->name;
 				}
 				if ( ! empty( $term_names ) ) {
-					echo '<ev:type><![CDATA[' . esc_html( implode( ',', $term_names ) ) . "]]</ev:type>\n";
+					echo '<ev:type><![CDATA[' . esc_html( implode( ',', $term_names ) ) . "]]></ev:type>\n";
 				}
 			}
 		}
