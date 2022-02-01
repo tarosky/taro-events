@@ -49,7 +49,7 @@ class Feed extends Singleton {
 			$attachment_id = get_post_thumbnail_id( get_the_ID() );
 			$image         = wp_get_attachment_image_src( $attachment_id, apply_filters( 'taro_events_rss2_item_enclosure_image_size', 'large' ) );
 			if ( $image ) {
-				$length   = $this->get_remote_image_size( $image[0] );
+				$length   = filesize( get_attached_file( $attachment_id ) );
 				$mimetype = get_post_mime_type( $attachment_id );
 				echo '<enclosure url="' . esc_attr( $image[0] ) . '" length="' . esc_attr( $length ) . '" type="' . esc_attr( $mimetype ) . '"/>';
 			}
@@ -108,31 +108,4 @@ class Feed extends Singleton {
 			}
 		}
 	}
-
-	/**
-	 * Get remote image file size.
-	 *
-	 * @param string $url The image url.
-	 *
-	 * @return int
-	 */
-	public function get_remote_image_size( $url ) {
-		// Check the existance of the URL.
-		$ch = curl_init( $url );
-		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-		$http_status = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
-		curl_close( $ch );
-		if ( ! ( 200 <= $http_status && $http_status <= 400 ) ) {
-			return null;
-		}
-
-		// Get the URL headers.
-		$headers = get_headers( $url, true );
-		if ( ! $headers ) {
-			return null;
-		}
-
-		return (int) $headers['Content-Length'];
-	}
-
 }

@@ -1,0 +1,343 @@
+# Blank WordPress Pot
+# Copyright 2014 ...
+# This file is distributed under the GNU General Public License v3 or later.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Taro "
+"Events Pot v1.0.0\n"
+"POT-Creation-Date: "
+"2022-02-02 02:07+0900\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Ko "
+"Takagi <takagi@go-sign."
+"info>\n"
+"Language-Team: TAROSKY "
+"INC<info@tarosky.co.jp>\n"
+"Report-Msgid-Bugs-To: "
+"TAROSKY INC<info@tarosky."
+"co.jp>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/"
+"plain; charset=UTF-8\n"
+"Content-Transfer-"
+"Encoding: 8bit\n"
+"Plural-Forms: "
+"nplurals=2; plural=n != "
+"1;\n"
+"X-Textdomain-Support: "
+"yesX-Generator: Poedit "
+"1.6.4\n"
+"X-Poedit-SourceCharset: "
+"UTF-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;esc_html_e;"
+"esc_html_x:1,2c;"
+"esc_html__;esc_attr_e;"
+"esc_attr_x:1,2c;"
+"esc_attr__;_ex:1,2c;"
+"_nx:4c,1,2;"
+"_nx_noop:4c,1,2;_x:1,2c;"
+"_n:1,2;_n_noop:1,2;"
+"__ngettext:1,2;"
+"__ngettext_noop:1,2;_c,"
+"_nc:4c,1,2\n"
+"X-Poedit-Basepath: ..\n"
+"Language: en_US\n"
+"X-Generator: Poedit "
+"2.4.3\n"
+"X-Poedit-"
+"SearchPath-0: .\n"
+"X-Poedit-"
+"SearchPathExcluded-0: "
+"node_modules\n"
+"X-Poedit-"
+"SearchPathExcluded-1: "
+"vendor\n"
+"X-Poedit-"
+"SearchPathExcluded-2: "
+"dist\n"
+
+#: includes/functions.php:32
+msgid "Events"
+msgstr ""
+
+#: includes/functions.php:57
+#: src/Tarosky/Events/Controller/Filter.php:89
+msgid "Event categories"
+msgstr ""
+
+#: includes/functions.php:80
+#: src/Tarosky/Events/Controller/Filter.php:97
+msgid "Event types"
+msgstr ""
+
+#: includes/functions.php:116
+msgid "Accepting"
+msgstr ""
+
+#: includes/functions.php:117
+msgid "Opening"
+msgstr ""
+
+#: includes/functions.php:118
+msgid "Finished"
+msgstr ""
+
+#: src/Tarosky/Events/Controller/Filter.php:105
+#: templates/metabox-event.php:39
+msgid "Event status"
+msgstr ""
+
+#: src/Tarosky/Events/Controller/Filter.php:109
+msgid "Filter"
+msgstr ""
+
+#: src/Tarosky/Events/Controller/Filter.php:140
+#: src/Tarosky/Events/Controller/Filter.php:164
+msgid "Do not specify"
+msgstr ""
+
+#: src/Tarosky/Events/MetaBoxes/EventMetaBox.php:65
+msgid "Events Setting"
+msgstr ""
+
+#: taro-events.php:28
+msgid ""
+"Autoloader is missing. "
+"Did you ran composer "
+"install?"
+msgstr ""
+
+#: templates/metabox-event.php:8
+msgid "Basic"
+msgstr ""
+
+#: templates/metabox-event.php:14
+#: templates/metabox-event.php:354
+msgid "Name"
+msgstr ""
+
+#: templates/metabox-event.php:15
+msgid "Description"
+msgstr ""
+
+#: templates/metabox-event.php:43
+#: templates/metabox-event.php:93
+#: templates/metabox-event.php:216
+#: templates/metabox-event.php:287
+msgid "Not specified"
+msgstr ""
+
+#: templates/metabox-event.php:47
+msgid ""
+"The event is scheduled "
+"to happen"
+msgstr ""
+
+#: templates/metabox-event.php:48
+msgid ""
+"The event has been "
+"canceled"
+msgstr ""
+
+#: templates/metabox-event.php:49
+msgid ""
+"The event has been moved "
+"from in-person "
+"attendance to online "
+"attendance"
+msgstr ""
+
+#: templates/metabox-event.php:50
+msgid ""
+"The event has been "
+"postponed to a later "
+"date, but the date isn't "
+"known yet"
+msgstr ""
+
+#: templates/metabox-event.php:51
+msgid ""
+"The event has been "
+"rescheduled to a later "
+"date"
+msgstr ""
+
+#: templates/metabox-event.php:66
+msgid "Date"
+msgstr ""
+
+#: templates/metabox-event.php:72
+msgid "Start date"
+msgstr ""
+
+#: templates/metabox-event.php:73
+msgid "End date"
+msgstr ""
+
+#: templates/metabox-event.php:74
+msgid ""
+"Reception start date"
+msgstr ""
+
+#: templates/metabox-event.php:75
+msgid "Reception end date"
+msgstr ""
+
+#: templates/metabox-event.php:112
+msgid "Location"
+msgstr ""
+
+#: templates/metabox-event.php:120
+msgid "Offline event"
+msgstr ""
+
+#: templates/metabox-event.php:127
+msgid ""
+"If this event is "
+"offline, please check "
+"the box."
+msgstr ""
+
+#: templates/metabox-event.php:136
+msgid "Location name"
+msgstr ""
+
+#: templates/metabox-event.php:143
+msgid ""
+"The name of the venue."
+msgstr ""
+
+#: templates/metabox-event.php:151
+msgid "Location address"
+msgstr ""
+
+#: templates/metabox-event.php:158
+msgid ""
+"The detailed address of "
+"the venue."
+msgstr ""
+
+#: templates/metabox-event.php:166
+msgid "Online event"
+msgstr ""
+
+#: templates/metabox-event.php:173
+msgid ""
+"If this event is online, "
+"please check the box."
+msgstr ""
+
+#: templates/metabox-event.php:180
+msgid "Location URL"
+msgstr ""
+
+#: templates/metabox-event.php:195
+msgid ""
+"The URL of the online "
+"event, where people can "
+"join."
+msgstr ""
+
+#: templates/metabox-event.php:204
+msgid "Offers"
+msgstr ""
+
+#: templates/metabox-event.php:212
+msgid "Availability"
+msgstr ""
+
+#: templates/metabox-event.php:220
+msgid "In stock"
+msgstr ""
+
+#: templates/metabox-event.php:221
+msgid "Sold out"
+msgstr ""
+
+#: templates/metabox-event.php:222
+msgid "Pre order"
+msgstr ""
+
+#: templates/metabox-event.php:238
+msgid "Price"
+msgstr ""
+
+#: templates/metabox-event.php:246
+msgid ""
+"The lowest available "
+"price available for your "
+"tickets, including "
+"service charges and fees."
+msgstr ""
+
+#: templates/metabox-event.php:253
+msgid "Currency"
+msgstr ""
+
+#: templates/metabox-event.php:259
+msgid "USD"
+msgstr ""
+
+#: templates/metabox-event.php:261
+msgid "The 3-letter "
+msgstr ""
+
+#: templates/metabox-event.php:262
+msgid ""
+"ISO 4217 currency code"
+msgstr ""
+
+#: templates/metabox-event.php:269
+msgid "Varid from"
+msgstr ""
+
+#: templates/metabox-event.php:300
+msgid ""
+"The date and time when "
+"tickets go on sale (only "
+"required on date-"
+"restricted offers)."
+msgstr ""
+
+#: templates/metabox-event.php:308
+#: templates/metabox-event.php:368
+msgid "URL"
+msgstr ""
+
+#: templates/metabox-event.php:316
+msgid ""
+"The URL of a page "
+"providing the ability to "
+"buy tickets."
+msgstr ""
+
+#: templates/metabox-event.php:322
+msgid "Organizer"
+msgstr ""
+
+#: templates/metabox-event.php:330
+msgid "Type"
+msgstr ""
+
+#: templates/metabox-event.php:336
+msgid "Organization"
+msgstr ""
+
+#: templates/metabox-event.php:337
+msgid "Person"
+msgstr ""
+
+#: templates/metabox-event.php:361
+msgid ""
+"The person or "
+"organization that is "
+"hosting the event."
+msgstr ""
+
+#: templates/metabox-event.php:376
+msgid ""
+"The event host's domain "
+"URL."
+msgstr ""
