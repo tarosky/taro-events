@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Taro Events
- * Plugin URI: https://wordpress.org/plugins/taro-events/
+ * Plugin URI: https://github.com/tarosky/taro-events
  * Description: Add events feature to your WordPress site.
  * Author: Tarosky INC.
  * Version: 1.0.3

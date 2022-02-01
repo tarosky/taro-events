@@ -33,7 +33,7 @@ class Feed extends Singleton {
 			return;
 		}
 
-		echo 'xmlns:ev="http://purl.org/rss/1.0/modules/event/"';
+		echo 'xmlns:ev="http://purl.org/rss/1.0/modules/event/"' . "\n";
 	}
 
 	/**
