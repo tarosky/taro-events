@@ -1,0 +1,262 @@
+# Blank WordPress Pot
+# Copyright 2014 ...
+# This file is distributed under the GNU General Public License v3 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Taro Events Pot v1.0.0\n"
+"POT-Creation-Date: 2022-02-02 02:07+0900\n"
+"PO-Revision-Date: \n"
+"Language-Team: TAROSKY INC<info@tarosky.co.jp>\n"
+"Report-Msgid-Bugs-To: TAROSKY INC<info@tarosky.co.jp>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html_x:1,2c;esc_html__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;"
+"_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Generator: Poedit 2.4.3\n"
+"Last-Translator: \n"
+"Language: ja\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: node_modules\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+"X-Poedit-SearchPathExcluded-2: dist\n"
+
+#: includes/functions.php:32
+msgid "Events"
+msgstr "イベント"
+
+#: includes/functions.php:57 src/Tarosky/Events/Controller/Filter.php:89
+msgid "Event categories"
+msgstr "イベントカテゴリー"
+
+#: includes/functions.php:80 src/Tarosky/Events/Controller/Filter.php:97
+msgid "Event types"
+msgstr "イベント種別"
+
+#: includes/functions.php:116
+msgid "Accepting"
+msgstr "受付中"
+
+#: includes/functions.php:117
+msgid "Opening"
+msgstr "開催中"
+
+#: includes/functions.php:118
+msgid "Finished"
+msgstr "開催終了"
+
+#: src/Tarosky/Events/Controller/Filter.php:105 templates/metabox-event.php:39
+msgid "Event status"
+msgstr "イベントステータス"
+
+#: src/Tarosky/Events/Controller/Filter.php:109
+msgid "Filter"
+msgstr "絞り込み"
+
+#: src/Tarosky/Events/Controller/Filter.php:140
+#: src/Tarosky/Events/Controller/Filter.php:164
+msgid "Do not specify"
+msgstr "指定しない"
+
+#: src/Tarosky/Events/MetaBoxes/EventMetaBox.php:65
+msgid "Events Setting"
+msgstr "イベント設定"
+
+#: taro-events.php:28
+msgid "Autoloader is missing. Did you ran composer install?"
+msgstr "オートローダーが見つかりません。composer install は行いましたか?"
+
+#: templates/metabox-event.php:8
+msgid "Basic"
+msgstr "基本設定"
+
+#: templates/metabox-event.php:14 templates/metabox-event.php:354
+msgid "Name"
+msgstr "名称"
+
+#: templates/metabox-event.php:15
+msgid "Description"
+msgstr "説明"
+
+#: templates/metabox-event.php:43 templates/metabox-event.php:93
+#: templates/metabox-event.php:216 templates/metabox-event.php:287
+msgid "Not specified"
+msgstr "指定なし"
+
+#: templates/metabox-event.php:47
+msgid "The event is scheduled to happen"
+msgstr "イベントは開催される予定です"
+
+#: templates/metabox-event.php:48
+msgid "The event has been canceled"
+msgstr "イベントはキャンセルされました"
+
+#: templates/metabox-event.php:49
+msgid "The event has been moved from in-person attendance to online attendance"
+msgstr "イベントは対面からオンラインへ変更されました"
+
+#: templates/metabox-event.php:50
+msgid ""
+"The event has been postponed to a later date, but the date isn't known yet"
+msgstr "イベントは延期されましたが、日付はまだ未定です"
+
+#: templates/metabox-event.php:51
+msgid "The event has been rescheduled to a later date"
+msgstr "イベントは後日に延期されました"
+
+#: templates/metabox-event.php:66
+msgid "Date"
+msgstr "日付"
+
+#: templates/metabox-event.php:72
+msgid "Start date"
+msgstr "開始日"
+
+#: templates/metabox-event.php:73
+msgid "End date"
+msgstr "終了日"
+
+#: templates/metabox-event.php:74
+msgid "Reception start date"
+msgstr "受付開始日"
+
+#: templates/metabox-event.php:75
+msgid "Reception end date"
+msgstr "受付終了日"
+
+#: templates/metabox-event.php:112
+msgid "Location"
+msgstr "場所"
+
+#: templates/metabox-event.php:120
+msgid "Offline event"
+msgstr "オフラインイベント"
+
+#: templates/metabox-event.php:127
+msgid "If this event is offline, please check the box."
+msgstr "オフラインイベントの場合は、チェックを入れてください。"
+
+#: templates/metabox-event.php:136
+msgid "Location name"
+msgstr "会場名"
+
+#: templates/metabox-event.php:143
+msgid "The name of the venue."
+msgstr "会場の名前。"
+
+#: templates/metabox-event.php:151
+msgid "Location address"
+msgstr "会場住所"
+
+#: templates/metabox-event.php:158
+msgid "The detailed address of the venue."
+msgstr "会場の詳細な住所。"
+
+#: templates/metabox-event.php:166
+msgid "Online event"
+msgstr "オンラインイベント"
+
+#: templates/metabox-event.php:173
+msgid "If this event is online, please check the box."
+msgstr "オンラインイベントの場合は、チェックを入れてください。"
+
+#: templates/metabox-event.php:180
+msgid "Location URL"
+msgstr "会場 URL"
+
+#: templates/metabox-event.php:195
+msgid "The URL of the online event, where people can join."
+msgstr "ユーザーが参加できるオンラインイベントの URL。"
+
+#: templates/metabox-event.php:204
+msgid "Offers"
+msgstr "申し込み"
+
+#: templates/metabox-event.php:212
+msgid "Availability"
+msgstr "利用状況"
+
+#: templates/metabox-event.php:220
+msgid "In stock"
+msgstr "受付中"
+
+#: templates/metabox-event.php:221
+msgid "Sold out"
+msgstr "受付終了"
+
+#: templates/metabox-event.php:222
+msgid "Pre order"
+msgstr "受付前"
+
+#: templates/metabox-event.php:238
+msgid "Price"
+msgstr "価格"
+
+#: templates/metabox-event.php:246
+msgid ""
+"The lowest available price available for your tickets, including service "
+"charges and fees."
+msgstr "サービス料や手数料などを含むチケットの最低価格。"
+
+#: templates/metabox-event.php:253
+msgid "Currency"
+msgstr "通貨"
+
+#: templates/metabox-event.php:259
+msgid "USD"
+msgstr "USD"
+
+#: templates/metabox-event.php:261
+msgid "The 3-letter "
+msgstr "半角3文字"
+
+#: templates/metabox-event.php:262
+msgid "ISO 4217 currency code"
+msgstr "ISO 4217 通貨コード"
+
+#: templates/metabox-event.php:269
+msgid "Varid from"
+msgstr "チケット発売開始日時"
+
+#: templates/metabox-event.php:300
+msgid ""
+"The date and time when tickets go on sale (only required on date-restricted "
+"offers)."
+msgstr "チケットが発売される日時（期間限定販売の場合のみ必要）"
+
+#: templates/metabox-event.php:308 templates/metabox-event.php:368
+msgid "URL"
+msgstr "URL"
+
+#: templates/metabox-event.php:316
+msgid "The URL of a page providing the ability to buy tickets."
+msgstr "チケットを購入できるページの URL。"
+
+#: templates/metabox-event.php:322
+msgid "Organizer"
+msgstr "主催者"
+
+#: templates/metabox-event.php:330
+msgid "Type"
+msgstr "種別"
+
+#: templates/metabox-event.php:336
+msgid "Organization"
+msgstr "組織"
+
+#: templates/metabox-event.php:337
+msgid "Person"
+msgstr "個人"
+
+#: templates/metabox-event.php:361
+msgid "The person or organization that is hosting the event."
+msgstr "イベントを主催している個人または組織。"
+
+#: templates/metabox-event.php:376
+msgid "The event host's domain URL."
+msgstr "イベント主催者の URL。"
