@@ -68,7 +68,8 @@ class Feed extends Singleton {
 			} else {
 				$date = wp_date( 'Y-m-d', strtotime( $date ) );
 			}
-			echo '<ev:' . str_replace( '_', '', $key ) . '>' . esc_html( $date ) . '</ev:' . $key . ">\n";
+			$ev_key = str_replace( '_', '', $key );
+			echo '<ev:' . $ev_key . '>' . esc_html( $date ) . '</ev:' . $ev_key . ">\n";
 		}
 
 		// Location
