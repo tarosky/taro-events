@@ -74,7 +74,7 @@ HTML;
 		}
 
 		// Date
-		$offset = $this->get_gmt_offset_string();
+		$offset = \Tarosky\Events\Utility\Date::get_gmt_offset_string();
 		$dates  = [];
 		foreach ( [ 'start_date', 'end_date' ] as $key ) {
 			$date = get_post_meta( $post->ID, taro_events_meta_prefix() . $key, true );
@@ -199,16 +199,16 @@ HTML;
 		return apply_filters( 'taro_events_get_json_ld', $json, $post );
 	}
 
-	/**
-	 * Get gmt offset string. (e.g, "+09:00")
-	 *
-	 * @return string
-	 */
-	public function get_gmt_offset_string() {
-		$offset  = get_option( 'gmt_offset' );
-		$hours   = (int) $offset;
-		$minutes = abs( ( $offset - (int) $offset ) * 60 );
-
-		return apply_filters( 'taro_events_get_gmt_offset_string', sprintf( '%+03d:%02d', $hours, $minutes ) );
-	}
+//	/**
+//	 * Get gmt offset string. (e.g, "+09:00")
+//	 *
+//	 * @return string
+//	 */
+//	public function get_gmt_offset_string() {
+//		$offset  = get_option( 'gmt_offset' );
+//		$hours   = (int) $offset;
+//		$minutes = abs( ( $offset - (int) $offset ) * 60 );
+//
+//		return apply_filters( 'taro_events_get_gmt_offset_string', sprintf( '%+03d:%02d', $hours, $minutes ) );
+//	}
 }
