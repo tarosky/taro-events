@@ -118,6 +118,8 @@ class EventMetaBox extends Singleton {
 			'reception_start_date_time',
 			'reception_end_date',
 			'reception_end_date_time',
+			'offers_valid_from',
+			'offers_valid_from_time',
 		] );
 	}
 
@@ -148,7 +150,11 @@ class EventMetaBox extends Singleton {
 		foreach ( $this->get_date_meta_keys() as $key ) {
 			$value = filter_input( INPUT_POST, $key );
 			if ( $value ) {
-				if ( in_array( $key, $this->get_prefix_meta_keys( [ 'start_date', 'reception_start_date' ] ), true ) ) {
+				if ( in_array( $key, $this->get_prefix_meta_keys( [
+					'start_date',
+					'reception_start_date',
+					'offers_valid_from'
+				] ), true ) ) {
 					$related_time = filter_input( INPUT_POST, $key . '_time' ) ?: '00:00:00';
 					$value        = $value . ' ' . $related_time;
 				} elseif ( in_array( $key, $this->get_prefix_meta_keys( [
