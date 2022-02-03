@@ -355,7 +355,7 @@ function taro_events_is_available_filter_event_status() {
 function taro_events_is_available_meta_key( $meta_key = '' ) {
 	$unavailable_meta_keys = apply_filters( 'taro_events_unavailable_meta_keys', [] );
 
-	return ( ! in_array( $meta_key, $unavailable_meta_keys ) );
+	return ( ! in_array( $meta_key, $unavailable_meta_keys, true ) );
 }
 
 /**

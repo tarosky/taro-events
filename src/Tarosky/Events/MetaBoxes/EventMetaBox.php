@@ -153,13 +153,13 @@ class EventMetaBox extends Singleton {
 				if ( in_array( $key, $this->get_prefix_meta_keys( [
 					'start_date',
 					'reception_start_date',
-					'offers_valid_from'
+					'offers_valid_from',
 				] ), true ) ) {
 					$related_time = filter_input( INPUT_POST, $key . '_time' ) ? filter_input( INPUT_POST, $key . '_time' ) . ':00' : '00:00:00';
 					$value        = $value . ' ' . $related_time;
 				} elseif ( in_array( $key, $this->get_prefix_meta_keys( [
 					'end_date',
-					'reception_end_date'
+					'reception_end_date',
 				] ), true ) ) {
 					$related_time = filter_input( INPUT_POST, $key . '_time' ) ? filter_input( INPUT_POST, $key . '_time' ) . ':00' : '23:59:59';
 					$value        = $value . ' ' . $related_time;

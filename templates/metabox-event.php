@@ -10,7 +10,7 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 	<tbody>
 	<?php
 	$meta_key = taro_events_meta_prefix() . 'name';
-	if ( taro_events_is_available_meta_key( $meta_key ) ):
+	if ( taro_events_is_available_meta_key( $meta_key ) ) :
 		?>
 		<tr>
 			<th><label
@@ -18,33 +18,33 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 			</th>
 			<td>
 				<input type="text" name="<?php echo esc_attr( $meta_key ); ?>"
-				       id="<?php echo esc_attr( $meta_key ); ?>"
-				       class="regular-text"
-				       value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
+					id="<?php echo esc_attr( $meta_key ); ?>"
+					class="regular-text"
+					value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
 			</td>
 		</tr>
 	<?php endif; ?>
 	<?php
 	$meta_key = taro_events_meta_prefix() . 'description';
-	if ( taro_events_is_available_meta_key( $meta_key ) ):
+	if ( taro_events_is_available_meta_key( $meta_key ) ) :
 		?>
 		<tr>
 			<th><label
-					for="<?php echo esc_attr( $meta_key ); ?>"><?php esc_html_e( 'Description', 'taro-events' ); ?></label>
+				for="<?php echo esc_attr( $meta_key ); ?>"><?php esc_html_e( 'Description', 'taro-events' ); ?></label>
 			</th>
 			<td>
 			<textarea rows="5" class="large-text code" name="<?php echo esc_attr( $meta_key ); ?>"
-			          id="<?php echo esc_attr( $meta_key ); ?>"><?php echo esc_textarea( get_post_meta( $post->ID, $meta_key, true ) ); ?></textarea>
+				id="<?php echo esc_attr( $meta_key ); ?>"><?php echo esc_textarea( get_post_meta( $post->ID, $meta_key, true ) ); ?></textarea>
 			</td>
 		</tr>
 	<?php endif; ?>
 	<?php
 	$meta_key = taro_events_meta_prefix() . 'event_status';
-	if ( taro_events_is_available_meta_key( $meta_key ) ):
+	if ( taro_events_is_available_meta_key( $meta_key ) ) :
 		?>
 		<tr>
 			<th><label
-					for="<?php echo esc_attr( $meta_key ); ?>"><?php esc_html_e( 'Event status', 'taro-events' ); ?></label>
+				for="<?php echo esc_attr( $meta_key ); ?>"><?php esc_html_e( 'Event status', 'taro-events' ); ?></label>
 			</th>
 			<td>
 				<select name="<?php echo esc_attr( $meta_key ); ?>" id="<?php echo esc_attr( $meta_key ); ?>">
@@ -62,7 +62,7 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 						?>
 						<option
 							value="<?php echo esc_attr( $key ); ?>" <?php selected( get_post_meta( $post->ID, $meta_key, true ), $key ); ?>><?php echo esc_html( $label ); ?></option>
-					<?php
+						<?php
 					endforeach;
 					?>
 				</select>
@@ -84,7 +84,7 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 			'reception_end_date'   => __( 'Reception end date', 'taro-events' ),
 		] as $key => $label
 	) :
-		$meta_key = taro_events_meta_prefix() . $key;
+		$meta_key      = taro_events_meta_prefix() . $key;
 		$meta_key_time = taro_events_meta_prefix() . $key . '_time';
 		if ( ! taro_events_is_available_meta_key( $meta_key ) ) {
 			continue;
@@ -98,11 +98,11 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 			<th><label for="<?php echo esc_attr( $meta_key ); ?>"><?php echo esc_html( $label ); ?></label></th>
 			<td>
 				<input type="date" name="<?php echo esc_attr( $meta_key ); ?>"
-				       id="<?php echo esc_attr( $meta_key ); ?>" class="regular-text"
-				       value="<?php echo esc_attr( $date ); ?>"/>
+					id="<?php echo esc_attr( $meta_key ); ?>" class="regular-text"
+					value="<?php echo esc_attr( $date ); ?>"/>
 				<input type="time"
-				       name="<?php echo esc_attr( $meta_key_time ); ?>" id="<?php echo esc_attr( $meta_key_time ); ?>"
-				       value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key_time, true ) ); ?>">
+					name="<?php echo esc_attr( $meta_key_time ); ?>" id="<?php echo esc_attr( $meta_key_time ); ?>"
+					value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key_time, true ) ); ?>">
 			</td>
 		</tr>
 	<?php endforeach; ?>
@@ -123,8 +123,8 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 			<td>
 				<label>
 					<input type="checkbox" name="<?php echo esc_attr( $meta_key ); ?>"
-					       id="<?php echo esc_attr( $meta_key ); ?>"
-					       value="1" <?php checked( get_post_meta( $post->ID, $meta_key, true ) ); ?> />
+						id="<?php echo esc_attr( $meta_key ); ?>"
+						value="1" <?php checked( get_post_meta( $post->ID, $meta_key, true ) ); ?> />
 					<?php esc_html_e( 'If this event is offline, please check the box.', 'taro-events' ); ?>
 				</label>
 			</td>
@@ -140,9 +140,9 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 			</th>
 			<td>
 				<input type="text" name="<?php echo esc_attr( $meta_key ); ?>"
-				       id="<?php echo esc_attr( $meta_key ); ?>"
-				       class="regular-text"
-				       value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
+					id="<?php echo esc_attr( $meta_key ); ?>"
+					class="regular-text"
+					value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
 				<p class="description"><?php esc_html_e( 'The name of the venue.', 'taro-events' ); ?></p>
 			</td>
 		</tr>
@@ -157,9 +157,9 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 			</th>
 			<td>
 				<input type="text" name="<?php echo esc_attr( $meta_key ); ?>"
-				       id="<?php echo esc_attr( $meta_key ); ?>"
-				       class="regular-text"
-				       value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
+					id="<?php echo esc_attr( $meta_key ); ?>"
+					class="regular-text"
+					value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
 				<p class="description"><?php esc_html_e( 'The detailed address of the venue.', 'taro-events' ); ?></p>
 			</td>
 		</tr>
@@ -175,8 +175,8 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 			<td>
 				<label>
 					<input type="checkbox" name="<?php echo esc_attr( $meta_key ); ?>"
-					       id="<?php echo esc_attr( $meta_key ); ?>"
-					       value="1" <?php checked( get_post_meta( $post->ID, $meta_key, true ) ); ?> />
+						id="<?php echo esc_attr( $meta_key ); ?>"
+						value="1" <?php checked( get_post_meta( $post->ID, $meta_key, true ) ); ?> />
 					<?php esc_html_e( 'If this event is online, please check the box.', 'taro-events' ); ?>
 				</label>
 			</td>
@@ -192,10 +192,10 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 			</th>
 			<td>
 				<input type="url" name="<?php echo esc_attr( $meta_key ); ?>"
-				       id="<?php echo esc_attr( $meta_key ); ?>"
-				       class="regular-text"
-				       placeholder="https://example.com"
-				       value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
+					id="<?php echo esc_attr( $meta_key ); ?>"
+					class="regular-text"
+					placeholder="https://example.com"
+					value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
 				<p class="description"><?php esc_html_e( 'The URL of the online event, where people can join.', 'taro-events' ); ?></p>
 			</td>
 		</tr>
@@ -228,7 +228,7 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 						?>
 						<option
 							value="<?php echo esc_attr( $key ); ?>" <?php selected( get_post_meta( $post->ID, $meta_key, true ), $key ); ?>><?php echo esc_html( $label ); ?></option>
-					<?php
+						<?php
 					endforeach;
 					?>
 				</select>
@@ -244,10 +244,10 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 			</th>
 			<td>
 				<input type="text" name="<?php echo esc_attr( $meta_key ); ?>"
-				       id="<?php echo esc_attr( $meta_key ); ?>"
-				       class="regular-text"
-				       placeholder="100"
-				       value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
+					id="<?php echo esc_attr( $meta_key ); ?>"
+					class="regular-text"
+					placeholder="100"
+					value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
 				<p class="description"><?php esc_html_e( 'The lowest available price available for your tickets, including service charges and fees.', 'taro-events' ); ?></p>
 			</td>
 		</tr>
@@ -262,10 +262,10 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 			</th>
 			<td>
 				<input type="text" name="<?php echo esc_attr( $meta_key ); ?>"
-				       id="<?php echo esc_attr( $meta_key ); ?>"
-				       class="regular-text"
-				       placeholder="<?php esc_html_e( 'USD', 'taro-events' ); ?>"
-				       value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
+					id="<?php echo esc_attr( $meta_key ); ?>"
+					class="regular-text"
+					placeholder="<?php esc_html_e( 'USD', 'taro-events' ); ?>"
+					value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
 				<p class="description"><?php esc_html_e( 'The 3-letter ', 'taro-events' ); ?><a
 						href="https://en.wikipedia.org/wiki/ISO_4217"><?php esc_html_e( 'ISO 4217 currency code', 'taro-events' ); ?></a>
 				</p>
@@ -278,7 +278,7 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 			'offers_valid_from' => __( 'Varid from', 'taro-events' ),
 		] as $key => $label
 	) :
-		$meta_key = taro_events_meta_prefix() . $key;
+		$meta_key      = taro_events_meta_prefix() . $key;
 		$meta_key_time = taro_events_meta_prefix() . $key . '_time';
 		if ( ! taro_events_is_available_meta_key( $meta_key ) ) {
 			break;
@@ -292,11 +292,11 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 			<th><label for="<?php echo esc_attr( $meta_key ); ?>"><?php echo esc_html( $label ); ?></label></th>
 			<td>
 				<input type="date" name="<?php echo esc_attr( $meta_key ); ?>"
-				       id="<?php echo esc_attr( $meta_key ); ?>" class="regular-text"
-				       value="<?php echo esc_attr( $date ); ?>"/>
+					id="<?php echo esc_attr( $meta_key ); ?>" class="regular-text"
+					value="<?php echo esc_attr( $date ); ?>"/>
 				<input type="time"
-				       name="<?php echo esc_attr( $meta_key_time ); ?>" id="<?php echo esc_attr( $meta_key_time ); ?>"
-				       value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key_time, true ) ); ?>">
+					name="<?php echo esc_attr( $meta_key_time ); ?>" id="<?php echo esc_attr( $meta_key_time ); ?>"
+					value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key_time, true ) ); ?>">
 				<p class="description"><?php esc_html_e( 'The date and time when tickets go on sale (only required on date-restricted offers).', 'taro-events' ); ?></p>
 			</td>
 		</tr>
@@ -310,10 +310,10 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 			</th>
 			<td>
 				<input type="text" name="<?php echo esc_attr( $meta_key ); ?>"
-				       id="<?php echo esc_attr( $meta_key ); ?>"
-				       class="regular-text"
-				       placeholder="https://example.com"
-				       value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
+					id="<?php echo esc_attr( $meta_key ); ?>"
+					class="regular-text"
+					placeholder="https://example.com"
+					value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
 				<p class="description"><?php esc_html_e( 'The URL of a page providing the ability to buy tickets.', 'taro-events' ); ?></p>
 			</td>
 		</tr>
@@ -343,9 +343,9 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 					?>
 					<label>
 						<input type="radio" name="<?php echo esc_attr( $meta_key ); ?>"
-						       value="<?php echo esc_attr( $key ); ?>" <?php checked( get_post_meta( $post->ID, $meta_key, true ), $key ); ?> /><?php echo esc_html( $label ); ?>
+							value="<?php echo esc_attr( $key ); ?>" <?php checked( get_post_meta( $post->ID, $meta_key, true ), $key ); ?> /><?php echo esc_html( $label ); ?>
 					</label>
-				<?php
+					<?php
 				endforeach;
 				?>
 			</td>
@@ -360,9 +360,9 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 			</th>
 			<td>
 				<input type="text" name="<?php echo esc_attr( $meta_key ); ?>"
-				       id="<?php echo esc_attr( $meta_key ); ?>"
-				       class="regular-text"
-				       value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
+					id="<?php echo esc_attr( $meta_key ); ?>"
+					class="regular-text"
+					value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
 				<p class="description"><?php esc_html_e( 'The person or organization that is hosting the event.', 'taro-events' ); ?></p>
 			</td>
 		</tr>
@@ -376,10 +376,10 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 			</th>
 			<td>
 				<input type="text" name="<?php echo esc_attr( $meta_key ); ?>"
-				       id="<?php echo esc_attr( $meta_key ); ?>"
-				       class="regular-text"
-				       placeholder="https://example.com"
-				       value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
+					id="<?php echo esc_attr( $meta_key ); ?>"
+					class="regular-text"
+					placeholder="https://example.com"
+					value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
 				<p class="description"><?php esc_html_e( "The event host's domain URL.", 'taro-events' ); ?></p>
 			</td>
 		</tr>
