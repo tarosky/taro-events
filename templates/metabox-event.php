@@ -9,28 +9,31 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 <table class="form-table">
 	<tbody>
 	<?php
-	foreach (
-		[
-			'name'        => __( 'Name', 'taro-events' ),
-			'description' => __( 'Description', 'taro-events' ),
-		] as $key => $label
-	) :
-		$meta_key = taro_events_meta_prefix() . $key;
-		?>
-		<tr>
-			<th><label
-					for="<?php echo esc_attr( $meta_key ); ?>"><?php echo esc_html( $label ); ?></label>
-			</th>
-			<td>
-				<input type="url" name="<?php echo esc_attr( $meta_key ); ?>"
-					id="<?php echo esc_attr( $meta_key ); ?>"
-					class="regular-text"
-					value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
-			</td>
-		</tr>
-		<?php
-	endforeach;
+	$meta_key = taro_events_meta_prefix() . 'name';
 	?>
+	<tr>
+		<th><label
+				for="<?php echo esc_attr( $meta_key ); ?>"><?php esc_html_e( 'Name', 'taro-events' ); ?></label>
+		</th>
+		<td>
+			<input type="text" name="<?php echo esc_attr( $meta_key ); ?>"
+			       id="<?php echo esc_attr( $meta_key ); ?>"
+			       class="regular-text"
+			       value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key, true ) ); ?>"/>
+		</td>
+	</tr>
+	<?php
+	$meta_key = taro_events_meta_prefix() . 'description';
+	?>
+	<tr>
+		<th><label
+				for="<?php echo esc_attr( $meta_key ); ?>"><?php esc_html_e( 'Description', 'taro-events' ); ?></label>
+		</th>
+		<td>
+			<textarea rows="5" class="large-text code" name="<?php echo esc_attr( $meta_key ); ?>"
+			          id="<?php echo esc_attr( $meta_key ); ?>"><?php echo esc_textarea( get_post_meta( $post->ID, $meta_key, true ) ); ?></textarea>
+		</td>
+	</tr>
 	<?php
 	$meta_key = taro_events_meta_prefix() . 'event_status';
 	?>
