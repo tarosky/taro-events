@@ -88,21 +88,9 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 				<input type="date" name="<?php echo esc_attr( $meta_key ); ?>"
 					id="<?php echo esc_attr( $meta_key ); ?>" class="regular-text"
 					value="<?php echo esc_attr( $date ); ?>"/>
-				<select name="<?php echo esc_attr( $meta_key_time ); ?>"
-					id="<?php echo esc_attr( $meta_key_time ); ?>">
-					<option value=""><?php echo esc_html( __( 'Not specified', 'taro-events' ) ); ?></option>
-					<?php
-					foreach ( range( 0, 23 ) as $hour ) :
-						foreach ( [ '00', '30' ] as $minute ) :
-							?>
-							<option
-								value="<?php echo esc_attr( sprintf( '%02s:%02s:00', $hour, $minute ) ); ?>" <?php selected( get_post_meta( $post->ID, $meta_key_time, true ), sprintf( '%02s:%02s:00', $hour, $minute ) ); ?>>
-								<?php echo esc_html( sprintf( '%02s:%02s', $hour, $minute ) ); ?></option>
-							<?php
-						endforeach;
-					endforeach;
-					?>
-				</select>
+				<input type="time"
+				       name="<?php echo esc_attr( $meta_key_time ); ?>" id="<?php echo esc_attr( $meta_key_time ); ?>"
+				       value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key_time, true ) ); ?>">
 			</td>
 		</tr>
 	<?php endforeach; ?>
@@ -282,21 +270,9 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 				<input type="date" name="<?php echo esc_attr( $meta_key ); ?>"
 					id="<?php echo esc_attr( $meta_key ); ?>" class="regular-text"
 					value="<?php echo esc_attr( $date ); ?>"/>
-				<select name="<?php echo esc_attr( $meta_key_time ); ?>"
-					id="<?php echo esc_attr( $meta_key_time ); ?>">
-					<option value=""><?php echo esc_html( __( 'Not specified', 'taro-events' ) ); ?></option>
-					<?php
-					foreach ( range( 0, 23 ) as $hour ) :
-						foreach ( [ '00', '30' ] as $minute ) :
-							?>
-							<option
-								value="<?php echo esc_attr( sprintf( '%02s:%02s:00', $hour, $minute ) ); ?>" <?php selected( get_post_meta( $post->ID, $meta_key_time, true ), sprintf( '%02s:%02s:00', $hour, $minute ) ); ?>>
-								<?php echo esc_html( sprintf( '%02s:%02s', $hour, $minute ) ); ?></option>
-							<?php
-						endforeach;
-					endforeach;
-					?>
-				</select>
+				<input type="time"
+				       name="<?php echo esc_attr( $meta_key_time ); ?>" id="<?php echo esc_attr( $meta_key_time ); ?>"
+				       value="<?php echo esc_attr( get_post_meta( $post->ID, $meta_key_time, true ) ); ?>">
 				<p class="description"><?php esc_html_e( 'The date and time when tickets go on sale (only required on date-restricted offers).', 'taro-events' ); ?></p>
 			</td>
 		</tr>
