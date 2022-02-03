@@ -86,7 +86,7 @@ class EventMetaBox extends Singleton {
 	 * @return array
 	 */
 	public function get_meta_keys() {
-		return $this->get_prefix_meta_keys( $this->meta_keys );
+		return $this->get_prefix_meta_keys( apply_filters( 'taro_events_get_meta_keys', $this->meta_keys ) );
 	}
 
 	/**

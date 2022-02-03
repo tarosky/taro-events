@@ -6,8 +6,10 @@
 wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 ?>
 <h3><?php esc_html_e( 'Basic', 'taro-events' ); ?></h3>
+<?php do_action( 'taro_events_before_metabox_basic_group', $post->ID ); ?>
 <table class="form-table">
 	<tbody>
+	<?php do_action( 'taro_events_top_metabox_basic_group', $post->ID ); ?>
 	<?php
 	$meta_key = taro_events_meta_prefix() . 'name';
 	if ( taro_events_is_available_meta_key( $meta_key ) ) :
@@ -69,12 +71,16 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 			</td>
 		</tr>
 	<?php endif; ?>
+	<?php do_action( 'taro_events_bottom_metabox_basic_group', $post->ID ); ?>
 	</tbody>
 </table>
+<?php do_action( 'taro_events_after_metabox_basic_group', $post->ID ); ?>
 
 <h3><?php esc_html_e( 'Date', 'taro-events' ); ?></h3>
+<?php do_action( 'taro_events_before_metabox_date_group', $post->ID ); ?>
 <table class="form-table">
 	<tbody>
+	<?php do_action( 'taro_events_top_metabox_date_group', $post->ID ); ?>
 	<?php
 	foreach (
 		[
@@ -106,12 +112,16 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 			</td>
 		</tr>
 	<?php endforeach; ?>
+	<?php do_action( 'taro_events_bottom_metabox_date_group', $post->ID ); ?>
 	</tbody>
 </table>
+<?php do_action( 'taro_events_after_metabox_date_group', $post->ID ); ?>
 
 <h3><?php esc_html_e( 'Location', 'taro-events' ); ?></h3>
+<?php do_action( 'taro_events_before_metabox_location_group', $post->ID ); ?>
 <table class="form-table">
 	<tbody>
+	<?php do_action( 'taro_events_top_metabox_location_group', $post->ID ); ?>
 	<?php
 	$meta_key = taro_events_meta_prefix() . 'is_offline';
 	if ( taro_events_is_available_meta_key( $meta_key ) ) :
@@ -200,12 +210,16 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 			</td>
 		</tr>
 	<?php endif; ?>
+	<?php do_action( 'taro_events_bottom_metabox_location_group', $post->ID ); ?>
 	</tbody>
 </table>
+<?php do_action( 'taro_events_after_metabox_location_group', $post->ID ); ?>
 
 <h3><?php esc_html_e( 'Offers', 'taro-events' ); ?></h3>
+<?php do_action( 'taro_events_before_metabox_offers_group', $post->ID ); ?>
 <table class="form-table">
 	<tbody>
+	<?php do_action( 'taro_events_top_metabox_offers_group', $post->ID ); ?>
 	<?php
 	$meta_key = taro_events_meta_prefix() . 'offers_availability';
 	if ( taro_events_is_available_meta_key( $meta_key ) ) :
@@ -318,12 +332,16 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 			</td>
 		</tr>
 	<?php endif; ?>
+	<?php do_action( 'taro_events_bottom_metabox_offers_group', $post->ID ); ?>
 	</tbody>
 </table>
+<?php do_action( 'taro_events_after_metabox_offers_group', $post->ID ); ?>
 
 <h3><?php esc_html_e( 'Organizer', 'taro-events' ); ?></h3>
+<?php do_action( 'taro_events_before_metabox_organizer_group', $post->ID ); ?>
 <table class="form-table">
 	<tbody>
+	<?php do_action( 'taro_events_top_metabox_organizer_group', $post->ID ); ?>
 	<?php
 	$meta_key = taro_events_meta_prefix() . 'organizer_type';
 	if ( taro_events_is_available_meta_key( $meta_key ) ) :
@@ -384,5 +402,7 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 			</td>
 		</tr>
 	<?php endif; ?>
+	<?php do_action( 'taro_events_bottom_metabox_organizer_group', $post->ID ); ?>
 	</tbody>
 </table>
+<?php do_action( 'taro_events_after_metabox_organizer_group', $post->ID ); ?>
