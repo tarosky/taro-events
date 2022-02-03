@@ -86,9 +86,21 @@ class EventMetaBox extends Singleton {
 	 * @return array
 	 */
 	public function get_meta_keys() {
-		return array_map( function ( $meta_key ) {
-			return taro_events_meta_prefix() . $meta_key;
-		}, $this->meta_keys );
+		return $this->get_prefix_meta_keys( $this->meta_keys );
+	}
+
+	/**
+	 * Get meta keys with prefix.
+	 *
+	 * @return array
+	 */
+	public function get_prefix_meta_keys( $meta_keys = [] ) {
+		return array_map(
+			function ( $meta_key ) {
+				return taro_events_meta_prefix() . $meta_key;
+			},
+			$meta_keys
+		);
 	}
 
 	/**
@@ -97,21 +109,16 @@ class EventMetaBox extends Singleton {
 	 * @return array
 	 */
 	public function get_date_meta_keys() {
-		return array_map(
-			function ( $meta_key ) {
-				return taro_events_meta_prefix() . $meta_key;
-			},
-			[
-				'start_date',
-				'start_date_time',
-				'end_date',
-				'end_date_time',
-				'reception_start_date',
-				'reception_start_date_time',
-				'reception_end_date',
-				'reception_end_date_time',
-			]
-		);
+		return $this->get_prefix_meta_keys( [
+			'start_date',
+			'start_date_time',
+			'end_date',
+			'end_date_time',
+			'reception_start_date',
+			'reception_start_date_time',
+			'reception_end_date',
+			'reception_end_date_time',
+		] );
 	}
 
 	/**
@@ -141,10 +148,13 @@ class EventMetaBox extends Singleton {
 		foreach ( $this->get_date_meta_keys() as $key ) {
 			$value = filter_input( INPUT_POST, $key );
 			if ( $value ) {
-				if ( in_array( $key, [ 'start_date', 'reception_start_date' ], true ) ) {
+				if ( in_array( $key, $this->get_prefix_meta_keys( [ 'start_date', 'reception_start_date' ] ), true ) ) {
 					$related_time = filter_input( INPUT_POST, $key . '_time' ) ?: '00:00:00';
 					$value        = $value . ' ' . $related_time;
-				} elseif ( in_array( $key, [ 'end_date', 'reception_end_date' ], true ) ) {
+				} elseif ( in_array( $key, $this->get_prefix_meta_keys( [
+					'end_date',
+					'reception_end_date'
+				] ), true ) ) {
 					$related_time = filter_input( INPUT_POST, $key . '_time' ) ?: '23:59:59';
 					$value        = $value . ' ' . $related_time;
 				}
