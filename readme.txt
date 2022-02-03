@@ -2,11 +2,11 @@
 
 Tags: events, posts
 Contributors: tarosky, ko31
-Tested up to: 5.8  
-Requires at least: 5.4  
-Requires PHP: 5.6  
-Stable Tag: 1.0.5
-License: GPLv3 or later  
+Tested up to: 5.8
+Requires at least: 5.4
+Requires PHP: 5.6
+Stable Tag: 1.0.6
+License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
 
 A WordPress plugin for creating events.
@@ -21,7 +21,7 @@ This plugin serves the following features.
 
 = Customization =
 
- Filtering form 
+ Filtering form
 
 To implement a filtering form of an event archive, you can use the shortcode `[taro-event-filter-form]`.
 
@@ -29,11 +29,11 @@ Also, you can call function `taro_events_get_filter_form` from anywhere in the t
 
 To override the filtering form, put the template file `taro_event_filter_form.php` in your themes directory.
 
- Hooks 
+ Hooks
 
 Many hooks are also available. Search your plugin direcoty with `'taro_events_'` and you can find them easily :)
 
- Functions 
+ Functions
 
 See `inludes/functions.php` and you can find useful template tags and functions.
 
