@@ -83,9 +83,9 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.txt
     - チケット発売開始日時（`_event_offers_valid_from`）
     - URL（`_event_offers_url`）
 - 主催者
-    種別（`_event_organizer_type`）
-    名称（`_event_organizer_name`）
-    URL（`_event_organizer_url`）
+    - 種別（`_event_organizer_type`）
+    - 名称（`_event_organizer_name`）
+    - URL（`_event_organizer_url`）
     
 #### 入力方法についての補足
 
