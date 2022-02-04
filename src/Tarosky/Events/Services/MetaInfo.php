@@ -69,6 +69,9 @@ HTML;
 
 		// Description
 		$description = get_post_meta( $post->ID, taro_events_meta_prefix() . 'description', true );
+		if ( ! $description ) {
+			$description = get_the_excerpt( $post );
+		}
 		if ( $description ) {
 			$json['description'] = $description;
 		}
@@ -185,16 +188,19 @@ HTML;
 		$json['offers'] = $offers;
 
 		// Organizer
-		$organizer['@type'] = get_post_meta( $post->ID, taro_events_meta_prefix() . 'organizer_type', true );
-		$organizer_name     = get_post_meta( $post->ID, taro_events_meta_prefix() . 'organizer_name', true );
-		if ( $organizer_name ) {
-			$organizer['name'] = $organizer_name;
+		$organizer_type = get_post_meta( $post->ID, taro_events_meta_prefix() . 'organizer_type', true );
+		if ( $organizer_type ) {
+			$organizer['@type'] = $organizer_type;
+			$organizer_name     = get_post_meta( $post->ID, taro_events_meta_prefix() . 'organizer_name', true );
+			if ( $organizer_name ) {
+				$organizer['name'] = $organizer_name;
+			}
+			$organizer_url = get_post_meta( $post->ID, taro_events_meta_prefix() . 'organizer_url', true );
+			if ( $organizer_url ) {
+				$organizer['url'] = $organizer_url;
+			}
+			$json['organizer'] = $organizer;
 		}
-		$organizer_url = get_post_meta( $post->ID, taro_events_meta_prefix() . 'organizer_url', true );
-		if ( $organizer_url ) {
-			$organizer['url'] = $organizer_url;
-		}
-		$json['organizer'] = $organizer;
 
 		return apply_filters( 'taro_events_get_json_ld', $json, $post );
 	}
