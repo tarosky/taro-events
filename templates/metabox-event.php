@@ -97,7 +97,8 @@ wp_nonce_field( 'taro_events_change', '_taroeventsnonce' );
 		}
 		$date = get_post_meta( $post->ID, $meta_key, true );
 		if ( $date ) {
-			$date = wp_date( 'Y-m-d', strtotime( $date ) );
+			$datetime = new DateTime( $date );
+			$date     = $datetime->format( 'Y-m-d' );
 		}
 		?>
 		<tr>
