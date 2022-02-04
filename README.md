@@ -9,15 +9,16 @@ Stable Tag: nightly
 License: GPLv3 or later  
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
 
-A WordPress plugin for creating events.
+This is a WordPress plugin that adds the function of event information.
 
 ## Description
 
 This plugin serves the following features.
 
-- Add a custom post type and custom taxonomies for event
+- Add a custom post type and some custom taxonomies for event
 - Filtering form for event archive
 - Add stuructured data for event single pages
+- Improve the RSS feed to output event information
 
 ### Customization
 
@@ -39,13 +40,9 @@ See `inludes/functions.php` and you can find useful template tags and functions.
 
 ## Installation
 
-### From Plugin Repository
-
-WIP
-
 ### From Github
 
-See [releases](https://github.com/tarosky/taro-events/releases).
+See [releases](https://github.com/tarosky/taro-events/releases/latest).
 
 ## FAQ
 
@@ -58,6 +55,35 @@ Please create new ticket on support forum.
 Create a new [issue](https://github.com/tarosky/taro-events/issues) or send [pull requests](https://github.com/tarosky/taro-events/pulls).
 
 ## Changelog
+
+### 1.0.6
+
+* Add hooks
+* Change custom fields
+* Fix bugs
+
+### 1.0.5
+
+* Add suupport for Japanese
+* Add custom fields
+* Fix bugs
+
+### 1.0.4
+
+* Improve RSS feed
+
+### 1.0.2
+
+* Add functions
+* Improve structured data
+* Improve hooks
+* Fix bugs
+
+### 1.0.1
+
+* Add custom fields
+* Improve structured data
+* Fix bugs
 
 ### 1.0.0
 
