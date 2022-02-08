@@ -638,6 +638,10 @@ RSS 2.0 の仕様に沿う形で任意項目を追加するには、namespace �
 
 ## 更新履歴
 
+### 1.0.8
+
+* Fix bugs
+
 ### 1.0.7
 
 * Improve README

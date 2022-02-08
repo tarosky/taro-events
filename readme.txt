@@ -2,11 +2,11 @@
 
 Tags: events, posts
 Contributors: tarosky, ko31
-Tested up to: 5.8  
-Requires at least: 5.4  
-Requires PHP: 5.6  
-Stable Tag: 1.0.7
-License: GPLv3 or later  
+Tested up to: 5.8
+Requires at least: 5.4
+Requires PHP: 5.6
+Stable Tag: 1.0.8
+License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
 
 イベント情報に関する機能を提供するプラグインです。
@@ -86,13 +86,13 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.txt
     - 種別（`_event_organizer_type`）
     - 名称（`_event_organizer_name`）
     - URL（`_event_organizer_url`）
-    
- 入力方法についての補足 
+
+ 入力方法についての補足
 
 - 時間が決まっていない終日イベントを作りたい場合は、開始日や終了日の時間フィールドは未入力にしてください。そうすることで、絞り込みフォームでのイベントステータス判定時に開始日が「00:00:00」、終了日が「23:59:59」という時間で扱われるので、その日一杯が有効期間として処理されるようになります。
 - いずれの項目も入力は任意ですので、サイトで必要な情報に合わせて入力してください。（ただし、後述の構造化データを出力するには、いくつかの項目が入力必須となります。）
 
- カスタムフィールドの値を参照 
+ カスタムフィールドの値を参照
 
 テーマでカスタムフィールドの値を使用する際は、WP 標準の `get_post_meta` 関数で値を取得できます。
 
@@ -142,7 +142,7 @@ $event_name = taro_events_get_metas();</pre>
 フォームをどこに設置した場合でも、絞り込みを実行するとイベントアーカイブページに遷移して、絞り込み結果が一覧表示されます。
 
 
- 絞り込みフォームのカスタマイズ 
+ 絞り込みフォームのカスタマイズ
 
 絞り込みフォームの表示内容は、以下の方法でカスタマイズすることが可能です。
 
@@ -169,7 +169,7 @@ $event_name = taro_events_get_metas();</pre>
 
 ※上記は [Googleのイベント構造化データ](https://developers.google.com/search/docs/advanced/structured-data/event?hl=ja)のページで必須項目とされている項目のため、未入力時は出力しない処理としています。
 
- 構造化データのカスタマイズ 
+ 構造化データのカスタマイズ
 
 `taro_events_is_display_json_ld` フィルターを使って、構造化データを出力しないように変更できます。
 
@@ -371,12 +371,12 @@ add_filter( 'taro_events_get_meta_keys', function ( $meta_keys ) {
 <pre>// 絞り込みからイベントカテゴリーを非表示にする。
 add_filter( 'taro_events_is_available_filter_event_category', function() {
     return false;
-} ); 
+} );
 
 // 絞り込みからイベント種別を非表示にする。
 add_filter( 'taro_events_is_available_filter_event_type', function() {
     return false;
-} ); 
+} );
 
 // 絞り込みからイベントステータスを非表示にする。
 add_filter( 'taro_events_is_available_filter_event_status', function() {
@@ -390,7 +390,7 @@ add_filter( 'taro_events_is_available_filter_event_status', function() {
 
 以下、「オンラインイベントかどうか」「オフラインイベントかどうか」の選択肢を加えるサンプルとなります。
 
- （1）クエリ変数の追加 
+ （1）クエリ変数の追加
 
 <pre>/**
  * オンラインorオフラインの検索フィールド用変数を追加
@@ -403,7 +403,7 @@ function add_event_format_query_var( $vars ) {
 }
 add_filter( 'query_vars', 'add_event_format_query_var' );</pre>
 
- （2）絞り込みフォームの項目を追加 
+ （2）絞り込みフォームの項目を追加
 
 <pre>/**
  * オンラインorオフラインのフォーム項目追加
@@ -424,7 +424,7 @@ function add_event_format_field( $form, $form_open, $form_event_category, $form_
 }
 add_filter( 'taro_events_get_filter_form_html', 'add_event_format_field', 10, 7 );</pre>
 
- （3）検索処理を追加 
+ （3）検索処理を追加
 
 <pre>/**
  * オンラインorオフラインの検索絞り込みクエリ追加
@@ -591,7 +591,7 @@ RSS 2.0 の仕様に沿う形で任意項目を追加するには、namespace �
 			endif;
 		?></pre>
 
- 検証用 Basic認証付きサイトの RSS を受信して表示する 
+ 検証用 Basic認証付きサイトの RSS を受信して表示する
 
 ステージング環境など Basic 認証付きサイトから RSS フィードを受信しようとした場合、
 `https://username:password@example.com` のような ID/PW 入りの URL を指定したいケースがありますが、
@@ -609,6 +609,10 @@ RSS 2.0 の仕様に沿う形で任意項目を追加するには、namespace �
 
 
 == 更新履歴 ==
+
+= 1.0.8 =
+
+* Fix bugs
 
 = 1.0.7 =
 
