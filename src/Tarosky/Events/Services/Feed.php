@@ -64,9 +64,11 @@ class Feed extends Singleton {
 			}
 			$date_time = get_post_meta( get_the_ID(), taro_events_meta_prefix() . $key . '_time', true );
 			if ( $date_time ) {
-				$date = sprintf( '%sT%s%s', wp_date( 'Y-m-d', strtotime( $date ) ), $date_time, $offset );
+				$datetime = new \DateTime( $date );
+				$date     = sprintf( '%sT%s%s', $datetime->format( 'Y-m-d' ), $date_time, $offset );
 			} else {
-				$date = wp_date( 'Y-m-d', strtotime( $date ) );
+				$datetime = new \DateTime( $date );
+				$date     = $datetime->format( 'Y-m-d' );
 			}
 			$ev_key = str_replace( '_', '', $key );
 			echo '<ev:' . $ev_key . '>' . esc_html( $date ) . '</ev:' . $ev_key . ">\n";
