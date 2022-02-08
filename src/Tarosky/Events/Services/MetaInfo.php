@@ -77,20 +77,15 @@ HTML;
 		}
 
 		// Date
-		$offset = \Tarosky\Events\Utility\Date::get_gmt_offset_string();
-		$dates  = [];
+		$dates = [];
 		foreach ( [ 'start_date', 'end_date' ] as $key ) {
 			$date = get_post_meta( $post->ID, taro_events_meta_prefix() . $key, true );
 			if ( ! $date ) {
 				continue;
 			}
 			$date_time = get_post_meta( $post->ID, taro_events_meta_prefix() . $key . '_time', true );
-			if ( $date_time ) {
-				$date = sprintf( '%sT%s%s', wp_date( 'Y-m-d', strtotime( $date ) ), $date_time, $offset );
-			} else {
-				$date = wp_date( 'Y-m-d', strtotime( $date ) );
-			}
-			$dates[] = $date;
+			$date      = \Tarosky\Events\Utility\Date::get_formatted_date_string( $date, $date_time );
+			$dates[]   = $date;
 		}
 		if ( count( $dates ) !== 2 ) {
 			// Required fields is empty.
@@ -174,12 +169,8 @@ HTML;
 		$offers_valid_from = get_post_meta( $post->ID, taro_events_meta_prefix() . 'offers_valid_from', true );
 		if ( $offers_valid_from ) {
 			$offers_valid_from_time = get_post_meta( $post->ID, taro_events_meta_prefix() . 'offers_valid_from_time', true );
-			if ( $offers_valid_from_time ) {
-				$valid_from = sprintf( '%sT%s%s', wp_date( 'Y-m-d', strtotime( $offers_valid_from ) ), $offers_valid_from_time, $offset );
-			} else {
-				$valid_from = wp_date( 'Y-m-d', strtotime( $offers_valid_from ) );
-			}
-			$offers['validFrom'] = $valid_from;
+			$valid_from             = \Tarosky\Events\Utility\Date::get_formatted_date_string( $offers_valid_from, $offers_valid_from_time );
+			$offers['validFrom']    = $valid_from;
 		}
 		$offers_url = get_post_meta( $post->ID, taro_events_meta_prefix() . 'offers_url', true );
 		if ( $offers_url ) {
