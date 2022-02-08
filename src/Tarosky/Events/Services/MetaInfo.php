@@ -77,22 +77,15 @@ HTML;
 		}
 
 		// Date
-		$offset = \Tarosky\Events\Utility\Date::get_gmt_offset_string();
-		$dates  = [];
+		$dates = [];
 		foreach ( [ 'start_date', 'end_date' ] as $key ) {
 			$date = get_post_meta( $post->ID, taro_events_meta_prefix() . $key, true );
 			if ( ! $date ) {
 				continue;
 			}
 			$date_time = get_post_meta( $post->ID, taro_events_meta_prefix() . $key . '_time', true );
-			if ( $date_time ) {
-				$datetime = new \DateTime( $date );
-				$date     = sprintf( '%sT%s%s', $datetime->format( 'Y-m-d' ), $date_time, $offset );
-			} else {
-				$datetime = new \DateTime( $date );
-				$date     = $datetime->format( 'Y-m-d' );
-			}
-			$dates[] = $date;
+			$date      = \Tarosky\Events\Utility\Date::get_formatted_date_string( $date, $date_time );
+			$dates[]   = $date;
 		}
 		if ( count( $dates ) !== 2 ) {
 			// Required fields is empty.
@@ -176,14 +169,8 @@ HTML;
 		$offers_valid_from = get_post_meta( $post->ID, taro_events_meta_prefix() . 'offers_valid_from', true );
 		if ( $offers_valid_from ) {
 			$offers_valid_from_time = get_post_meta( $post->ID, taro_events_meta_prefix() . 'offers_valid_from_time', true );
-			if ( $offers_valid_from_time ) {
-				$datetime   = new \DateTime( $offers_valid_from );
-				$valid_from = sprintf( '%sT%s%s', $datetime->format( 'Y-m-d' ), $offers_valid_from_time, $offset );
-			} else {
-				$datetime   = new \DateTime( $offers_valid_from );
-				$valid_from = $datetime->format( 'Y-m-d' );
-			}
-			$offers['validFrom'] = $valid_from;
+			$valid_from             = \Tarosky\Events\Utility\Date::get_formatted_date_string( $offers_valid_from, $offers_valid_from_time );
+			$offers['validFrom']    = $valid_from;
 		}
 		$offers_url = get_post_meta( $post->ID, taro_events_meta_prefix() . 'offers_url', true );
 		if ( $offers_url ) {

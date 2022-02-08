@@ -56,21 +56,14 @@ class Feed extends Singleton {
 		}
 
 		// Startdate, Enddate
-		$offset = \Tarosky\Events\Utility\Date::get_gmt_offset_string();
 		foreach ( [ 'start_date', 'end_date' ] as $key ) {
 			$date = get_post_meta( get_the_ID(), taro_events_meta_prefix() . $key, true );
 			if ( ! $date ) {
 				continue;
 			}
 			$date_time = get_post_meta( get_the_ID(), taro_events_meta_prefix() . $key . '_time', true );
-			if ( $date_time ) {
-				$datetime = new \DateTime( $date );
-				$date     = sprintf( '%sT%s%s', $datetime->format( 'Y-m-d' ), $date_time, $offset );
-			} else {
-				$datetime = new \DateTime( $date );
-				$date     = $datetime->format( 'Y-m-d' );
-			}
-			$ev_key = str_replace( '_', '', $key );
+			$date      = \Tarosky\Events\Utility\Date::get_formatted_date_string( $date, $date_time );
+			$ev_key    = str_replace( '_', '', $key );
 			echo '<ev:' . $ev_key . '>' . esc_html( $date ) . '</ev:' . $ev_key . ">\n";
 		}
 
