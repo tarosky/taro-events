@@ -86,9 +86,11 @@ HTML;
 			}
 			$date_time = get_post_meta( $post->ID, taro_events_meta_prefix() . $key . '_time', true );
 			if ( $date_time ) {
-				$date = sprintf( '%sT%s%s', wp_date( 'Y-m-d', strtotime( $date ) ), $date_time, $offset );
+				$datetime = new \DateTime( $date );
+				$date     = sprintf( '%sT%s%s', $datetime->format( 'Y-m-d' ), $date_time, $offset );
 			} else {
-				$date = wp_date( 'Y-m-d', strtotime( $date ) );
+				$datetime = new \DateTime( $date );
+				$date     = $datetime->format( 'Y-m-d' );
 			}
 			$dates[] = $date;
 		}
@@ -175,9 +177,11 @@ HTML;
 		if ( $offers_valid_from ) {
 			$offers_valid_from_time = get_post_meta( $post->ID, taro_events_meta_prefix() . 'offers_valid_from_time', true );
 			if ( $offers_valid_from_time ) {
-				$valid_from = sprintf( '%sT%s%s', wp_date( 'Y-m-d', strtotime( $offers_valid_from ) ), $offers_valid_from_time, $offset );
+				$datetime   = new \DateTime( $offers_valid_from );
+				$valid_from = sprintf( '%sT%s%s', $datetime->format( 'Y-m-d' ), $offers_valid_from_time, $offset );
 			} else {
-				$valid_from = wp_date( 'Y-m-d', strtotime( $offers_valid_from ) );
+				$datetime   = new \DateTime( $offers_valid_from );
+				$valid_from = $datetime->format( 'Y-m-d' );
 			}
 			$offers['validFrom'] = $valid_from;
 		}
