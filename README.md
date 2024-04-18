@@ -465,23 +465,33 @@ function add_event_format_filter_query( $wp_query ) {
 
         // オフライン選択時
         if ( 'offline' === $event_format ) {
-            $wp_query->set( 'meta_query', array(
-                array(
-                    'key'     => taro_events_meta_prefix() . 'is_offline',
-                    'value'   => '1',
-                    'compare' => '=',
-                )
-            ) );
+            // オリジナルメタクエリーを取得
+            $meta_query = ( array ) $wp_query->get( 'meta_query' );
+
+            // オフライン条件をメタクエリーに追加
+            $meta_query[] = array(
+                'key'     => taro_events_meta_prefix() . 'is_offline',
+                'value'   => '1',
+                'compare' => '=',
+            );
+
+            // メタクエリーを設定
+            $wp_query->set( 'meta_query', $meta_query );
 
         // オンライン選択時
         } elseif ( 'online' === $event_format ) {
-            $wp_query->set( 'meta_query', array(
-                array(
-                    'key'     => taro_events_meta_prefix() . 'is_online',
-                    'value'   => '1',
-                    'compare' => '=',
-                )
-            ) );
+            // オリジナルメタクエリーを取得
+            $meta_query = ( array ) $wp_query->get( 'meta_query' );
+
+            // オンライン条件をメタクエリーに追加
+            $meta_query[] = array(
+                'key'     => taro_events_meta_prefix() . 'is_online',
+                'value'   => '1',
+                'compare' => '=',
+            );
+
+            // メタクエリーを設定
+            $wp_query->set( 'meta_query', $meta_query );
         }
     }
 }
